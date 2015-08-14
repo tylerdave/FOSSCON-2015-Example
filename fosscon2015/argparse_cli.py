@@ -4,7 +4,6 @@ import argparse
 import json
 import logging
 import sys
-from pprint import pprint
 
 try:
     from collections import Counter
@@ -19,9 +18,9 @@ def get_char_counts(infile):
 
 def output_char_counts(char_counts, outfile):
     if outfile is sys.stdout:
-        outfile.write(str(pprint(char_counts.most_common())))
+        outfile.write('\n'.join(["%s: %s" % (x, y) for x, y in char_counts.most_common() if x.isalpha()]))
     else:
-        outfile.write(json.dumps(char_counts.most_common()))
+        outfile.write(json.dumps(dict(char_counts.most_common())))
 
 
 def cli():
