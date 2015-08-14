@@ -40,9 +40,10 @@ setup(
                  'fosscon2015'},
     entry_points={
         'console_scripts':[
-            'fosscon2015=cli.cli',
+            'fosscon-argparse=fosscon2015.argparse_cli:cli',
+            'fosscon-click=fosscon2015.click_cli.:cli',
             ],
-        }
+        },
     include_package_data=True,
     install_requires=requirements,
     license="MIT",
