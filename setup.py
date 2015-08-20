@@ -41,8 +41,8 @@ setup(
     entry_points={
         'console_scripts':[
             'hello-argparse=fosscon2015.hello_argparse:hello',
-            'fosscon-argparse=fosscon2015.argparse_cli:cli',
-            'fosscon-click=fosscon2015.click_cli:cli',
+            'fosscon-argparse=fosscon2015.cli_argparse:cli',
+            'fosscon-click=fosscon2015.cli_click:cli',
             ],
         },
     include_package_data=True,
