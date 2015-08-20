@@ -40,9 +40,10 @@ setup(
                  'fosscon2015'},
     entry_points={
         'console_scripts':[
-            'hello-argparse=fosscon2015.hello_argparse:hello',
             'fosscon-argparse=fosscon2015.cli_argparse:cli',
             'fosscon-click=fosscon2015.cli_click:cli',
+            'hello-argparse=fosscon2015.hello_argparse:hello',
+            'hello-click=fosscon2015.hello_click:hello',
             ],
         },
     include_package_data=True,
