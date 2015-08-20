@@ -9,12 +9,12 @@ FOSSCON 2015 Example
         :target: https://pypi.python.org/pypi/fosscon2015
 
 
-CLI examples
+CLI examples for a talk at FOSSCON 2015. 
 
 * Free software: MIT license
-* Documentation: https://fosscon2015.readthedocs.org.
+* See: http://daveops.com/fosscon2015
 
 Features
 --------
 
-* TODO
+* Contains examples of argparse and click CLI programs
