@@ -5,7 +5,7 @@ from __future__ import print_function
 import argparse
 
 def hello():
-    """ Argparse CLI to gree the provided NAME. """
+    """ Argparse CLI to greet the provided NAME. """
 
     parser = argparse.ArgumentParser()
     parser.add_argument('name', help="name of person to greet")
