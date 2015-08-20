@@ -1,1 +1,2 @@
-click
+click==5.1
+colorama==0.3.3
