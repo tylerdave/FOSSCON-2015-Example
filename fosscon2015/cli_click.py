@@ -2,6 +2,7 @@
 
 import click
 import json
+import sys
 
 try:
     from collections import Counter
@@ -13,17 +14,20 @@ except ImportError:
 @click.command()
 @click.argument('infile', type=click.File('r'), default='-')
 @click.argument('outfile', type=click.File('w'), default='-')
-@click.option('--verbose', '-v')
-def cli(infile, outfile, verbose):
-    """ Count the occurances of characters in INFILE and save results in OUTFILE. """
+@click.option('--log-file', '-l', type=click.File('w'), default=sys.stderr)
+@click.option('--verbose', '-v', is_flag=True)
+def cli(infile, outfile, log_file, verbose):
+    """ Count the occurances of characters in INFILE and output to OUTFILE. """
 
-    click.echo("Hi!")
-    click.secho("infile: {0}".format(infile))
-    click.secho("outfile: {0}".format(outfile))
+    if verbose:
+        click.secho("Infile: {0}".format(infile), fg='yellow', file=log_file)
+        click.secho("Outfile: {0}".format(outfile), fg='yellow', file=log_file)
+
     text = infile.read()
     char_counts = Counter(text)
-    click.secho(json.dumps(dict(char_counts.most_common())), file=outfile,
-            fg='green')
+    output = json.dumps(dict(char_counts.most_common()), indent=2)
+    click.secho("Counted characters.", bold=True, file=log_file)
+    click.secho(output, file=outfile, fg='green')
 
 
 if __name__ == '__main__':
