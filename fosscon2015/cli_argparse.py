@@ -8,19 +8,8 @@ import sys
 try:
     from collections import Counter
 except ImportError:
+    # backport_collections needed for python 2.6 compatibility
     from backport_collections import Counter
-
-
-def get_char_counts(infile):
-    text = infile.read()
-    char_counter = Counter(text)
-    return char_counter
-
-def output_char_counts(char_counts, outfile):
-    if outfile is sys.stdout:
-        outfile.write('\n'.join(["%s: %s" % (x, y) for x, y in char_counts.most_common() if x.isalpha()]))
-    else:
-        outfile.write(json.dumps(dict(char_counts.most_common())))
 
 
 def cli():
@@ -45,8 +34,11 @@ def cli():
 
     logging.debug("Command args: %s", args)
 
-    char_counts = get_char_counts(args.infile)
-    output_char_counts(char_counts, args.outfile)
+    text = args.infile.read()
+    char_counts = Counter(text)
+
+    args.outfile.write(json.dumps(dict(char_counts.most_common()), indent=2))
+
 
 if __name__ == '__main__':
     cli()
