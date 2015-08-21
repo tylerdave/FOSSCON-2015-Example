@@ -2,7 +2,6 @@ from __future__ import print_function
 
 import argparse
 import json
-import logging
 import sys
 
 try:
@@ -19,25 +18,19 @@ def cli():
     parser.add_argument('outfile', nargs='?', type=argparse.FileType('w'),
             default=sys.stdout, help="Optional. By default, writes to stdout.")
 
-    parser.add_argument('--log-file')
     parser.add_argument('--verbose', '-v', action='store_true')
 
     args = parser.parse_args()
 
-    logger_args = {}
+
     if args.verbose:
-        logger_args['level'] = logging.DEBUG
-    if args.log_file:
-        logger_args['filename'] = args.log_file
-
-    logging.basicConfig(**logger_args)
-
-    logging.debug("Command args: %s", args)
+        print("Command args: {0}".format(args), file=sys.stderr)
 
     text = args.infile.read()
     char_counts = Counter(text)
 
-    args.outfile.write(json.dumps(dict(char_counts.most_common()), indent=2))
+    print(json.dumps(dict(char_counts.most_common()), indent=2),
+            file=args.outfile)
 
 
 if __name__ == '__main__':
