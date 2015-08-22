@@ -20,14 +20,17 @@ def cli(infile, outfile, log_file, verbose):
     """ Count the occurances of characters in INFILE and output to OUTFILE. """
 
     if verbose:
-        click.secho("Infile: {0}".format(infile), fg='yellow', file=log_file)
-        click.secho("Outfile: {0}".format(outfile), fg='yellow', file=log_file)
+        click.echo("Infile: {0}".format(infile), file=log_file)
+        click.echo("Outfile: {0}".format(outfile), file=log_file)
 
     text = infile.read()
     char_counts = Counter(text)
     output = json.dumps(dict(char_counts.most_common()), indent=2)
-    click.secho("Counted characters.", bold=True, file=log_file)
+    click.echo("Counted characters...", file=log_file)
     click.secho(output, file=outfile, fg='green')
+
+    if verbose:
+        click.echo("Done.".format(outfile), file=log_file)
 
 
 if __name__ == '__main__':
