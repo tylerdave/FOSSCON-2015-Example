@@ -2,8 +2,8 @@
 FOSSCON 2015 Example
 ===============================
 
-.. image:: https://img.shields.io/travis/tylerdave/fosscon2015.svg
-        :target: https://travis-ci.org/tylerdave/fosscon2015
+.. image:: https://img.shields.io/travis/tylerdave/FOSSCON-2015-Example.svg
+        :target: https://travis-ci.org/tylerdave/FOSSCON-2015-Example
 
 CLI examples for a talk at FOSSCON 2015. 
 
