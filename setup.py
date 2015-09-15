@@ -20,6 +20,12 @@ requirements = [
     'colorama==0.3.3',
 ]
 
+try:
+    from collections import Counter
+except ImportError:
+    requirements.append('backport_collections==0.1')
+
+
 test_requirements = [
     # TODO: put package test requirements here
 ]
