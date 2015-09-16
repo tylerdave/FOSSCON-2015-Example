@@ -21,6 +21,7 @@ requirements = [
     'colorama==0.3.3',
 ]
 
+# installs backport_collections on py26
 try:
     from collections import Counter
 except ImportError:
